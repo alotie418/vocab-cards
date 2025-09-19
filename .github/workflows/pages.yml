@@ -1,19 +1,16 @@
 name: Deploy to GitHub Pages
-# Automatically build and deploy the app when changes are pushed to the
-# default branch. This workflow compiles the Vite project into static
-# assets and publishes them to the gh-pages branch using the
-# peaceiris/actions-gh-pages action. Ensure that you have enabled
-# GitHub Pages in the repository settings to serve from gh-pages.
-
 on:
   push:
     branches: [ main ]
-
+permissions:
+  contents: write
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
